@@ -1,0 +1,14 @@
+{
+  "name": "wu",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "fundon <cfddream@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.1.0"
+  }
+}
