@@ -2,13 +2,18 @@
   "name": "wu",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./index.js",
+  "bin": {
+    "wu": "./bin/wu.js"
+  },
+  "man": "./wu.1",
   "scripts": {
     "test": ""
   },
   "author": "fundon <cfddream@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.1.0"
+    "commander": "^2.1.0",
+    "marked": "^0.3.1"
   }
 }
