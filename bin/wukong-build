@@ -1,0 +1,78 @@
+#!/usr/bin/env node --harmony
+
+/**
+ *  Module dependencies.
+ */
+
+var program = require('commander'),
+    fs = require('fs'),
+    path = require('path')
+    resolve = path.resolve,
+    exists = fs.existsSync,
+    Wukong = require('..'),
+    utils = require('../lib/utils'),
+    fatal = utils.fatal,
+    log = utils.log;
+
+// options
+
+program
+  .option('-c, --config <file>', 'Custom configuration file', 'wukong.json')
+  .option('-s, --source <dir>', 'Source for the site', '.')
+  .option('-d, --dest <dir>', 'Output for the destination', '_site')
+  .option('-p, --postdir <dir>', 'Specify the post directory', '_posts')
+  .option('-f, --force', 'Ignore cache, force build the site', false)
+  .option('-v, --verbose', 'verbose output');
+
+// examples
+
+program.on('--help', function () {
+  console.log('  Examples:');
+  console.log();
+  console.log('    # build to ./_site');
+  console.log('    $ wukong build');
+  console.log();
+});
+
+// parse argv
+
+program.parse(process.argv);
+
+// wukong.json required!
+
+var config = resolve(process.cwd(), program.config);
+
+if (!exists(config)) fatal('Missing "wukong.json" configuration file.');
+
+try {
+  config = require(config);
+} catch (e) {
+  fatal('It seems like "wukong.json" is malformed.');
+}
+
+// Wukong
+
+var wukong = Wukong(process.cwd());
+
+// Plugins.
+
+var key, plugin, opts;
+for (key in config.plugins) {
+  opts = config.plugins[key];
+
+  try {
+    plugin = require(key);
+  } catch (e) {
+    fatal('Failed to require plugin "' + key + '".');
+  }
+
+  wukong.use(plugin(opts));
+}
+
+// Build.
+
+wukong.build(function (err) {
+  if (err) return fatal(err.message);
+  log('Successfully built to ' + wukong.destination());
+  process.exit(0);
+});

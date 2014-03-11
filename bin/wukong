@@ -1,0 +1,81 @@
+#!/usr/bin/env node
+
+/**
+ *  Module dependencies.
+ */
+
+var program = require('commander'),
+    spawn = require('win-fork'),
+    fs = require('fs'),
+    path = require('path'),
+    join = path.join,
+    resolve = path.resolve,
+    stat = fs.statSync,
+    exists = fs.existsSync;
+
+var pkg = require('../package.json');
+
+// usage
+
+program
+  .version(pkg.version)
+  .usage('<command> [options]');
+
+// sub-command help
+
+program.on('--help', function () {
+  console.log('  Commands:');
+  console.log();
+  console.log('    build          Build your site.');
+  console.log('    serve          Start a preview server.');
+  console.log();
+  process.exit();
+});
+
+// parse argv
+
+program.parse(process.argv);
+
+// args void of cmd
+
+var args = process.argv.slice(3);
+
+// command
+
+var cmd = program.args[0]
+
+// display help
+
+if (!cmd) program.help();
+
+// executable
+
+var bin = 'wukong-' + cmd;
+
+// local or resolve to absolute executable path
+
+var local = join(__dirname, bin);
+
+if (!exists(local)) {
+  bin = local
+} else {
+   bin = process.env.PATH.split(':').reduce(function(binary, p) {
+    p = resolve(p, bin);
+    return exists(p) && stat(p).isFile() ? p : binary;
+  }, bin);
+}
+
+// display help if bin does not exist
+
+if (!exists(bin)) {
+  console.error('\n  %s(1) does not exist', bin);
+  program.help();
+}
+
+// spawn
+
+var proc = spawn(bin, args, { stdio: 'inherit', customFds: [0, 1, 2] });
+
+proc.on('close', function(code){
+  process.exit(code);
+});
