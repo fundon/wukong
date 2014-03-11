@@ -2,7 +2,7 @@
   "name": "wukong",
   "version": "0.0.0",
   "description": "Metalsmith inspired, pluggable static site generator using generators via co and co-ware.",
- "keywords": [
+  "keywords": [
     "static",
     "file",
     "site",
