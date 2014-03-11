@@ -4,8 +4,8 @@
 
 In Wukong (likes Metalsmith)
 
-```
-Wu(__dirname)
+```js
+Wukong(__dirname)
   .use(function *() {
     var css = '', file;
 
