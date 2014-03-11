@@ -1,16 +1,31 @@
 {
   "name": "wukong",
   "version": "0.0.0",
-  "description": "",
+  "description": "Metalsmith inspired, pluggable static site generator using generators via co and co-ware.",
+ "keywords": [
+    "static",
+    "file",
+    "site",
+    "website",
+    "blog",
+    "generator",
+    "markdown",
+    "jekyll",
+    "wintersmith",
+    "blacksmith",
+    "generator",
+    "co",
+    "co-ware"
+  ],
   "main": "index",
   "bin": {
-    "wu": "./bin/wukong",
-    "wu-build": "./bin/wukong-build",
-    "wu-serve": "./bin/wukong-serve"
+    "wukong": "./bin/wukong",
+    "wukong-build": "./bin/wukong-build",
+    "wukong-serve": "./bin/wukong-serve"
   },
-  "man": "./wu.1",
+  "man": "./wukong.1",
   "scripts": {
-    "test": ""
+    "test": "make test"
   },
   "author": "fundon <cfddream@gmail.com>",
   "license": "MIT",
