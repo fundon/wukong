@@ -2,7 +2,7 @@
 
 [Metalsmith][] inspired, pluggable static site generator using generators via [co][] and [co-ware][].
 
-In Wukong (likes Metalsmith)
+In Wukong (likes in Metalsmith)
 
 ```js
 Wukong(__dirname)
