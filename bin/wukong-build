@@ -18,9 +18,9 @@ var program = require('commander'),
 
 program
   .option('-c, --config <file>', 'Custom configuration file', 'wukong.json')
-  .option('-s, --source <dir>', 'Source for the site', '.')
-  .option('-d, --dest <dir>', 'Output for the destination', '_site')
-  .option('-p, --postdir <dir>', 'Specify the post directory', '_posts')
+  .option('-s, --source <dir>', 'Source for the site', 'src')
+  .option('-d, --dest <dir>', 'Output for the destination', 'build')
+  .option('-t, --site <dir>', 'Specify the site directory', 'site')
   .option('-f, --force', 'Ignore cache, force build the site', false)
   .option('-v, --verbose', 'verbose output');
 
@@ -29,7 +29,7 @@ program
 program.on('--help', function () {
   console.log('  Examples:');
   console.log();
-  console.log('    # build to ./_site');
+  console.log('    # build to ./site');
   console.log('    $ wukong build');
   console.log();
 });
@@ -53,6 +53,18 @@ try {
 // Wukong
 
 var wukong = Wukong(process.cwd());
+// source
+var source = config.source || program.source;
+if (source) wukong.source(source);
+// site
+var ste = config.site || program.site;
+if (site) wukong.site(site);
+// destination
+var destination = config.destination || program.destination;
+if (destination) wukong.destination(destination);
+// metadata
+var metadata = config.metadata || program.metadata;
+if (metadata) wukong.metadata(metadata);
 
 // Plugins.
 
@@ -71,8 +83,7 @@ for (key in config.plugins) {
 
 // Build.
 
-wukong.build(function (err) {
-  if (err) return fatal(err.message);
+wukong.build(function *() {
   log('Successfully built to ' + wukong.destination());
   process.exit(0);
 });
