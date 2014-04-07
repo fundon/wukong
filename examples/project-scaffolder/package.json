@@ -1,0 +1,16 @@
+{
+  "name": "project-scaffolder",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "main": "build.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.7.0",
+    "cli-prompt": "^0.3.2",
+    "co": "^3.0.5",
+    "consolidate": "^0.10.0",
+    "handlebars": "^2.0.0-alpha.2"
+  }
+}
