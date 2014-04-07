@@ -10,17 +10,18 @@ Wukong(__dirname)
     var css = '', file;
 
     // Input files.
-    var files = this.i;
+    var files = this.input;
 
-    while ((file = files.shift())) {
-      if ('.css' != extname(file.name)) continue;
-      css += file.contents.toString();
+    for (var name in files) {
+      if ('.css' != extname(name)) continue;
+      css += files[name].contents.toString();
+      delete files[name];
     }
 
     css = myth(css);
 
     // Output index.css
-    this.i['index.css'] = {
+    this.output['index.css'] = {
       contents: new Buffer(css)
     };
 
