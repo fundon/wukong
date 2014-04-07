@@ -8,7 +8,7 @@ var w = Wukong(__dirname)
 
 function *concat(next) {
   var css = '', file;
-  var files = this.input[0];
+  var files = this.input;
 
   for (var name in files) {
     if ('.css' != extname(name)) continue;
