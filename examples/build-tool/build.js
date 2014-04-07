@@ -8,16 +8,17 @@ var w = Wukong(__dirname)
 
 function *concat(next) {
   var css = '', file;
-  var files = this.i;
+  var files = this.input[0];
 
-  while ((file = files.shift())) {
-    if ('.css' != extname(file.name)) continue;
-    css += file.contents.toString();
+  for (var name in files) {
+    if ('.css' != extname(name)) continue;
+    css += files[name].contents.toString();
+    delete files[name];
   }
 
   css = myth(css);
 
-  this.i['index.css'] = {
+  this.output['index.css'] = {
     contents: new Buffer(css)
   };
 
