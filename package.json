@@ -1,6 +1,6 @@
 {
   "name": "wukong",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Metalsmith inspired, pluggable static site generator using generators via co and co-ware.",
   "keywords": [
     "static",
@@ -40,7 +40,8 @@
     "front-matter": "^0.2.0",
     "is-utf8": "^0.2.0",
     "stat-mode": "^0.2.0",
-    "win-fork": "^1.1.1"
+    "win-fork": "^1.1.1",
+    "thunkify": "0.0.1"
   },
   "devDependencies": {
     "should": "^3.1.3",
