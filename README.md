@@ -30,6 +30,24 @@ Wukong(__dirname)
   .build();
 ```
 
+### Plugins
+
+Convert Metalsmith's plugin into Wukong's plugin
+
+#### Example
+
+```js
+var thunkify = require('thunkify');
+var permalinks = require('metalsmith-permalinks');
+
+module.exports = function (options) {
+  var links = thunkify(permalinks(options));
+  return function *permalinks(next) {
+    yield links(this.files, this.wukong);
+    yield next;
+  };
+};
+```
 
 
 [co]: https://github.com/visionmedia/co
