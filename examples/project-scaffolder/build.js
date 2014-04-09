@@ -50,8 +50,7 @@ function *ask(next) {
 
 function *template(next) {
 
-  var files = this.input;
-  var outfiles = this.output;
+  var files = this.files;
   var keys = Object.keys(files);
   var metadata = this.wukong.metadata();
 
@@ -63,12 +62,11 @@ function *template(next) {
 
   function run(file) {
     var str = files[file].contents.toString();
-    outfiles[file] = Object.create(files[file]);
     return function (done) {
       render(str, metadata, function(err, res) {
         if (err) return done(err);
-        outfiles[file].contents = new Buffer(res);
-        done(null, outfiles[file]);
+        files[file].contents = new Buffer(res);
+        done(null, files[file]);
       });
     };
   }

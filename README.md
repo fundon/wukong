@@ -10,7 +10,7 @@ Wukong(__dirname)
     var css = '', file;
 
     // Input files.
-    var files = this.input;
+    var files = this.files;
 
     for (var name in files) {
       if ('.css' != extname(name)) continue;
@@ -21,7 +21,7 @@ Wukong(__dirname)
     css = myth(css);
 
     // Output index.css
-    this.output['index.css'] = {
+    this.files['index.css'] = {
       contents: new Buffer(css)
     };
 
