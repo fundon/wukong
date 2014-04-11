@@ -62,7 +62,7 @@ Wukong(__dirname)
 
 #### metadata([metadata])
 
-  Get/set metalsmith.
+  Get/set metadata.
 
 #### site([path])
 
