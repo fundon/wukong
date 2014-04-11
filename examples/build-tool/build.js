@@ -1,18 +1,21 @@
-var Wukong = require('../..')
+'use strict';
+
+var wukong = require('../..');
 var extname = require('path').extname;
 var myth = require('myth');
 
-var w = Wukong(__dirname)
+wukong(__dirname)
   .use(concat('index.css'))
   .build();
 
-function concat(fileName, opt) {
+function concat(fileName) {
   var newFile = Object.create(null);
   var css = '';
   var i = 0;
   return function *concat(next) {
     var file = this.file;
     i++;
+    if ('.css' !== extname(file.name)) yield next;
     css += file.contents.toString();
     delete this.file;
 

@@ -12,4 +12,7 @@ test: node_modules
 		--reporter spec \
 		$(SCRIPTS)
 
-.PHONY: test
+jshint:
+	@-./node_modules/.bin/jshint ./
+
+.PHONY: test jshint

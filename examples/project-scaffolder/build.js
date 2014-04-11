@@ -1,14 +1,15 @@
+'use strict';
+
 var async = require('async');
-var Wukong = require('../..');
+var wukong = require('../..');
 var prompt = require('cli-prompt');
-var co = require('co');
 var render = require('consolidate').handlebars.render;
 
 /**
  * Build.
  */
 
-var wk = Wukong(__dirname)
+wukong(__dirname)
   .useGlobal(ask)
   .use(template)
   .build();
