@@ -62,13 +62,23 @@ Wukong(__dirname)
 
 #### metadata([metadata])
 
+  Get/set metalsmith.
+
 #### site([path])
+
+  Get/set site.
 
 #### source([path])
 
+  Get/set source.
+
 #### destination([path])
 
+  Get/set destination.
+
 #### join([path...])
+
+  Join the current dir
 
 #### build([*callback])
 
