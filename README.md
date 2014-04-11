@@ -6,49 +6,54 @@ In Wukong (likes in Metalsmith)
 
 ```js
 Wukong(__dirname)
+  // files's middlewares
+  .useGlobal(function *() {
+    tihs.files = this.files
+      .filter(function (v) {
+        return v === 'index';
+      });
+
+    yield next;
+  })
+  // file's middlewares
   .use(function *() {
-    var css = '', file;
-
-    // Input files.
-    var files = this.files;
-
-    for (var name in files) {
-      if ('.css' != extname(name)) continue;
-      css += files[name].contents.toString();
-      delete files[name];
-    }
-
-    css = myth(css);
-
-    // Output index.css
-    this.files['index.css'] = {
-      contents: new Buffer(css)
-    };
-
+    var file = this.file;
+    file.contents = myth(file.contents);
     yield next;
   })
   .build();
 ```
 
-### Plugins
+### APIs
 
-Convert Metalsmith's plugin into Wukong's plugin
+#### use(*plugin)
 
-#### Example
+  Add a middleware for the `file` object.
 
-```js
-var thunkify = require('thunkify');
-var permalinks = require('metalsmith-permalinks');
+#### run(file, *callback)
 
-module.exports = function (options) {
-  var links = thunkify(permalinks(options));
-  return function *permalinks(next) {
-    yield links(this.files, this.wukong);
-    yield next;
-  };
-};
-```
+  Run a set of `file` through the middleware stack
 
+#### useGlobal(*plugin)
+
+  Add a middleware for the `files` array.
+  The `files` array is just only storing names.
+
+#### runGlobal(files, *callback)
+
+  Run a set of `files` through the middleware stack
+
+#### metadata([metadata])
+
+#### site([path])
+
+#### source([path])
+
+#### destination([path])
+
+#### join([path...])
+
+#### build([*callback])
 
 [co]: https://github.com/visionmedia/co
 [co-ware]: https://github.com/fundon/co-ware

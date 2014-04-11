@@ -3,24 +3,27 @@ var extname = require('path').extname;
 var myth = require('myth');
 
 var w = Wukong(__dirname)
-  .use(concat)
+  .use(concat('index.css'))
   .build();
 
-function *concat(next) {
-  var css = '', file;
-  var files = this.files;
+function concat(fileName, opt) {
+  var newFile = Object.create(null);
+  var css = '';
+  var i = 0;
+  return function *concat(next) {
+    var file = this.file;
+    i++;
+    css += file.contents.toString();
+    delete this.file;
 
-  for (var name in files) {
-    if ('.css' != extname(name)) continue;
-    css += files[name].contents.toString();
-    delete files[name];
-  }
-
-  css = myth(css);
-
-  this.files['index.css'] = {
-    contents: new Buffer(css)
+    if (i === this.files.length) {
+      i = 0;
+      css = myth(css);
+      newFile.name = fileName;
+      newFile.contents = new Buffer(css);
+      this.file = newFile;
+      yield next;
+    }
   };
-
-  yield next;
 }
+

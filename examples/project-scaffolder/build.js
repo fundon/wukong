@@ -9,7 +9,7 @@ var render = require('consolidate').handlebars.render;
  */
 
 var wk = Wukong(__dirname)
-  .use(ask)
+  .useGlobal(ask)
   .use(template)
   .build();
 
@@ -49,24 +49,19 @@ function *ask(next) {
  */
 
 function *template(next) {
-
-  var files = this.files;
-  var keys = Object.keys(files);
+  var file = this.file;
   var metadata = this.wukong.metadata();
 
-  for (var i = 0, l = keys.length; i < l; i++) {
-    yield run(keys[i]);
-  }
-
+  yield run(file);
   yield next;
 
   function run(file) {
-    var str = files[file].contents.toString();
+    var str = file.contents.toString();
     return function (done) {
       render(str, metadata, function(err, res) {
         if (err) return done(err);
-        files[file].contents = new Buffer(res);
-        done(null, files[file]);
+        file.contents = new Buffer(res);
+        done(null, file);
       });
     };
   }
