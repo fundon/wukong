@@ -82,6 +82,11 @@ Wukong(__dirname)
 
 #### build([*callback])
 
+
+### License
+
+MIT
+
 [co]: https://github.com/visionmedia/co
 [co-ware]: https://github.com/fundon/co-ware
 [metalsmith]: https://github.com/segmentio/metalsmith
