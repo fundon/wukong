@@ -34,6 +34,17 @@ Wukong(__dirname)
 
   Run a set of `file` through the middleware stack
 
+##### `File`
+
+```js
+{
+  name: {String},
+  mode: {Number}, // oct
+  contents: {Buffer},
+  metadata: {Object}
+}
+```
+
 #### useGlobal(*plugin)
 
   Add a middleware for the `files` array.
@@ -42,6 +53,12 @@ Wukong(__dirname)
 #### runGlobal(files, *callback)
 
   Run a set of `files` through the middleware stack
+
+##### `Files`
+
+```js
+[ 'wukong.js', 'reset.css' ]
+```
 
 #### metadata([metadata])
 
