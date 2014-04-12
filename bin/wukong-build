@@ -52,7 +52,7 @@ try {
 
 // Wukong
 
-var wukong = Wukong(process.cwd());
+var wukong = new Wukong(process.cwd());
 // source
 var source = config.source || program.source;
 if (source) wukong.source(source);
