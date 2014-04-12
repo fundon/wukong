@@ -56,7 +56,7 @@ var bin = 'wukong-' + cmd;
 
 var local = join(__dirname, bin);
 
-if (!exists(local)) {
+if (exists(local)) {
   bin = local
 } else {
   bin = process.env.PATH.split(':').reduce(function(binary, p) {
