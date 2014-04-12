@@ -7,7 +7,7 @@ In Wukong (likes in Metalsmith)
 ```js
 Wukong(__dirname)
   // files's middlewares
-  .useGlobal(function *(next) {
+  .useBatch(function *(next) {
     tihs.files = this.files
       .filter(function (v) {
         return v === 'index';
@@ -45,12 +45,12 @@ Wukong(__dirname)
 }
 ```
 
-#### useGlobal(*plugin)
+#### useBatch(*plugin)
 
   Add a middleware for the `files` array.
   The `files` array is just only storing names.
 
-#### runGlobal(files, *callback)
+#### runBatch(files, *callback)
 
   Run a set of `files` through the middleware stack
 
