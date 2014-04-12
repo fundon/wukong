@@ -10,7 +10,7 @@ var render = require('consolidate').handlebars.render;
  */
 
 wukong(__dirname)
-  .useBatch(ask)
+  .useForFiles(ask)
   .use(template)
   .build();
 
