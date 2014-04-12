@@ -7,7 +7,7 @@ In Wukong (likes in Metalsmith)
 ```js
 Wukong(__dirname)
   // files's middlewares
-  .useGlobal(function *() {
+  .useGlobal(function *(next) {
     tihs.files = this.files
       .filter(function (v) {
         return v === 'index';
@@ -16,7 +16,7 @@ Wukong(__dirname)
     yield next;
   })
   // file's middlewares
-  .use(function *() {
+  .use(function *(next) {
     var file = this.file;
     file.contents = myth(file.contents);
     yield next;
