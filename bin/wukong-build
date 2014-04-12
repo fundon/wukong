@@ -12,9 +12,7 @@ var program = require('commander'),
     Wukong = require('..'),
     utils = require('../lib/utils'),
     fatal = utils.fatal,
-    log = utils.log,
-    isMetalsmithPlugin = utils.isMetalsmithPlugin,
-    wrapMetalsmithPlugin = utils.wrapMetalsmithPlugin;
+    log = utils.log;
 
 // options
 
@@ -70,16 +68,25 @@ if (metadata) wukong.metadata(metadata);
 
 // Plugins.
 
-var key, plugin, opts;
-for (key in config.plugins) {
-  opts = config.plugins[key];
+var plugins = config['files-plugins'] || Object.create(null), key, plugin, opts;
+for (key in plugins) {
+  opts = plugins[key];
 
   try {
-    if (isMetalsmithPlugin(key)) {
-      plugin = wrapMetalsmithPlugin(key);
-    } else {
-      plugin = require(key);
-    }
+    plugin = require(key);
+  } catch (e) {
+    fatal('Failed to require plugin "' + key + '".');
+  }
+
+  wukong.useForFiles(plugin(opts));
+}
+
+plugins = config.plugins || Object.create(null);
+for (key in plugins) {
+  opts = plugins[key];
+
+  try {
+    plugin = require(key);
   } catch (e) {
     fatal('Failed to require plugin "' + key + '".');
   }
