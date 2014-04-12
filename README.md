@@ -45,7 +45,7 @@ Wukong(__dirname)
 }
 ```
 
-#### useBatch(*plugin)
+#### useForFiles(*plugin)
 
   Add a middleware for the `files` array.
   The `files` array is just only storing names.
