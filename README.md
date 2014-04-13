@@ -38,7 +38,7 @@ Wukong(__dirname)
 
 ```js
 {
-  name: {String},
+  path: {String},
   mode: {Number}, // oct
   contents: {Buffer},
   metadata: {Object}

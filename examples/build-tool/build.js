@@ -15,14 +15,14 @@ function concat(fileName) {
   return function *concat(next) {
     var file = this.file;
     i++;
-    if ('.css' !== extname(file.name)) yield next;
+    if ('.css' !== extname(file.path)) yield next;
     css += file.contents.toString();
     delete this.file;
 
     if (i === this.files.length) {
       i = 0;
       css = myth(css);
-      newFile.name = fileName;
+      newFile.path = fileName;
       newFile.contents = new Buffer(css);
       this.file = newFile;
       yield next;
