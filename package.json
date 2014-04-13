@@ -1,6 +1,6 @@
 {
   "name": "wukong",
-  "version": "0.7.9",
+  "version": "0.7.10",
   "description": "Pluggable static site generator using generators via co and co-ware.",
   "keywords": [
     "static",
@@ -33,7 +33,7 @@
   "dependencies": {
     "chalk": "^0.4.0",
     "co": "^3.0.4",
-    "co-fs-plus": "^0.2.0",
+    "co-fs-plus": "^0.3.0",
     "co-ware": "^1.2.0",
     "commander": "^2.1.0",
     "debug": "^0.8.0",
