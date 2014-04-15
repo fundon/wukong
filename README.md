@@ -7,14 +7,14 @@ In Wukong (likes in Metalsmith)
 ```js
 Wukong(__dirname)
   // files's middlewares
-  .useForFiles(function *(next) {
+  .use(function *(next) {
     tihs.files = this.files
       .filter(function (v) {
         return v === 'index';
       });
 
     yield next;
-  })
+  }, 'before')
   // file's middlewares
   .use(function *(next) {
     var file = this.file;
@@ -26,9 +26,11 @@ Wukong(__dirname)
 
 ### APIs
 
-#### use(*plugin)
+#### use(*plugin, [type])
 
   Add a middleware for the `file` object.
+
+  `type`: before/after
 
 #### run(file, *callback)
 
@@ -44,15 +46,6 @@ Wukong(__dirname)
   metadata: {Object}
 }
 ```
-
-#### useForFiles(*plugin)
-
-  Add a middleware for the `files` array.
-  The `files` array is just only storing names.
-
-#### runForFiles(files, *callback)
-
-  Run a set of `files` through the middleware stack
 
 ##### `Files`
 
