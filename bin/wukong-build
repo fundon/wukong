@@ -68,9 +68,11 @@ if (metadata) wukong.metadata(metadata);
 
 // Plugins.
 
-var plugins = config['files-plugins'] || Object.create(null), key, plugin, opts;
+var plugins = config.plugins || Object.create(null), key, plugin, opts, around;
+
 for (key in plugins) {
   opts = plugins[key];
+  around = opts.around;
 
   try {
     plugin = require(key);
@@ -78,20 +80,7 @@ for (key in plugins) {
     fatal('Failed to require plugin "' + key + '".');
   }
 
-  wukong.useForFiles(plugin(opts));
-}
-
-plugins = config.plugins || Object.create(null);
-for (key in plugins) {
-  opts = plugins[key];
-
-  try {
-    plugin = require(key);
-  } catch (e) {
-    fatal('Failed to require plugin "' + key + '".');
-  }
-
-  wukong.use(plugin(opts));
+  wukong.use(plugin(opts), around);
 }
 
 // Build.
