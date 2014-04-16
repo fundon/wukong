@@ -25,8 +25,8 @@ function concat(fileName) {
       newFile.path = fileName;
       newFile.contents = new Buffer(css);
       this.file = newFile;
-      yield next;
     }
+    yield next;
   };
 }
 
