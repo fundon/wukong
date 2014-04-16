@@ -9,22 +9,21 @@ wukong(__dirname)
   .build();
 
 function concat(fileName) {
-  var newFile = Object.create(null);
   var css = '';
   var i = 0;
   return function *concat(next) {
     var file = this.file;
     i++;
     if ('.css' !== extname(file.path)) yield next;
-    css += file.contents.toString();
+    css += file.contents;
     delete this.file;
 
     if (i === this.files.length) {
       i = 0;
       css = myth(css);
-      newFile.path = fileName;
-      newFile.contents = new Buffer(css);
-      this.file = newFile;
+      file = this.file = Object.create(this.wukong.file);
+      file.path = fileName;
+      file.buffer = css;
     }
     yield next;
   };
