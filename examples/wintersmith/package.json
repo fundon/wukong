@@ -1,0 +1,11 @@
+{
+  "name": "wintersmith-example",
+  "private": true,
+  "dependencies": {
+    "wukong-templates": "~0.2.0",
+    "wukong-markdown": "~1.4.0",
+    "wukong-permalinks": "~0.0.3",
+    "jade": "^1.3.0",
+    "wukong": "~0.11.0"
+  }
+}

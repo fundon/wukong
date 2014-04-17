@@ -1,0 +1,25 @@
+{
+  "source": "./contents",
+  "metadata": {
+    "title": "My Wintersmith-Powered Blog",
+    "description": "My second, super-cool, Wintersmith-powered blog."
+  },
+  "plugins": [
+    {
+      "name": "wukong-markdown"
+    },
+    {
+      "name": "wukong-permalinks",
+      "options": {
+        "pattern": ":title"
+      }
+    },
+    {
+      "name": "wukong-templates",
+      "options": {
+        "engine": "jade",
+        "directory": "./templates"
+      }
+    }
+  ]
+}
