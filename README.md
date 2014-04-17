@@ -2,7 +2,7 @@
 
 Next-gen for pluggable Static Site Generator, using generators via [co][] and [co-ware][].
 
-[Metalsmith][] inspired.
+[Koa][] and [Metalsmith][] inspired.
 
 
 In Wukong (likes in Metalsmith)
@@ -111,4 +111,5 @@ MIT
 
 [co]: https://github.com/visionmedia/co
 [co-ware]: https://github.com/fundon/co-ware
+[koa]: https://github.com/koajs/koa
 [metalsmith]: https://github.com/segmentio/metalsmith
