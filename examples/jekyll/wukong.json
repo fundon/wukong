@@ -1,0 +1,29 @@
+{
+  "source": "./_posts",
+  "destination": "./_site",
+  "metadata": {
+    "title": "My Jekyll-Powered Blog",
+    "description": "My second, super-cool, Jekyll-powered blog."
+  },
+  "plugins": [
+    {
+      "name": "wukong-drafts"
+    },
+    {
+      "name": "wukong-markdown"
+    },
+    {
+      "name": "wukong-permalinks",
+      "options": {
+        "pattern": ":title"
+      }
+    },
+    {
+      "name": "wukong-templates",
+      "options": {
+        "engine": "swig",
+        "directory": "_layouts"
+      }
+    }
+  ]
+}

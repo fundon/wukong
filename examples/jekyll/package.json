@@ -1,0 +1,12 @@
+{
+  "name": "jekyll-example",
+  "private": true,
+  "dependencies": {
+    "swig": "^1.3.2",
+    "wukong": "^0.11.0",
+    "wukong-drafts": "^1.0.1",
+    "wukong-markdown": "^1.4.0",
+    "wukong-permalinks": "0.0.3",
+    "wukong-templates": "^0.2.0"
+  }
+}
