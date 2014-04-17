@@ -1,0 +1,11 @@
+{
+  "name": "static-site-example",
+  "private": true,
+  "dependencies": {
+    "handlebars": "^2.0.0-alpha.2",
+    "wukong": "^0.11.0",
+    "wukong-markdown": "^1.4.0",
+    "wukong-permalinks": "0.0.3",
+    "wukong-templates": "^0.2.0"
+  }
+}

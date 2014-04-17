@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "title": "My Blog",
+    "description": "My second, super-cool blog."
+  },
+  "plugins": [
+    {
+      "name": "wukong-markdown"
+    },
+    {
+      "name": "wukong-permalinks",
+      "options": {
+        "pattern": ":title"
+      }
+    },
+    {
+      "name": "wukong-templates",
+      "options": {
+        "engine": "handlebars"
+      }
+    }
+  ]
+}
