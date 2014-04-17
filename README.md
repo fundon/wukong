@@ -104,6 +104,11 @@ Wukong(__dirname)
 
   Join the current dir
 
+### Plugins
+
+* [wukong-drafts](https://www.npmjs.org/package/wukong-drafts)
+* [wukong-markdown](https://www.npmjs.org/package/wukong-markdown)
+* [wukong-templates](https://www.npmjs.org/package/wukong-templates)
 
 ### License
 
