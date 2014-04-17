@@ -1,6 +1,11 @@
 # Wukong [*悟空*] [![Build Status](https://travis-ci.org/fundon/wukong.svg)](https://travis-ci.org/fundon/wukong)
 
-[Metalsmith][] inspired, pluggable static site generator using generators via [co][] and [co-ware][].
+Next-gen for Static Site Generator.
+
+Pluggable static site generator using generators via [co][] and [co-ware][].
+
+[Metalsmith][] inspired.
+
 
 In Wukong (likes in Metalsmith)
 
