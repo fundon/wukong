@@ -42,15 +42,25 @@ Wukong(__dirname)
 {
   path: {String},
   mode: {Number}, // oct
-  contents: {Buffer},
-  metadata: {Object}
+  contents: {String},
+  metadata: {Object},
+  buffer: {Buffer}
+  ...
 }
 ```
 
 ##### `Files`
 
+###### Before
+
 ```js
-[ 'wukong.js', 'reset.css' ]
+[ 'wukong.js', 'reset.css', ... ]
+
+```
+###### After
+
+```js
+[ File, File, ... ]
 ```
 
 #### metadata([metadata])
