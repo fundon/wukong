@@ -26,17 +26,7 @@ Wukong(__dirname)
 
 ### APIs
 
-#### use(*plugin, [type])
-
-  Add a middleware for the `file` object.
-
-  `type`: before/after
-
-#### run(file, *callback)
-
-  Run a set of `file` through the middleware stack
-
-##### `File`
+#### File
 
 ```js
 {
@@ -49,41 +39,67 @@ Wukong(__dirname)
 }
 ```
 
-##### `Files`
 
-###### Before
+#### `Files`
+
+##### Before
 
 ```js
 [ 'wukong.js', 'reset.css', ... ]
 
 ```
-###### After
+##### After
 
 ```js
 [ File, File, ... ]
 ```
 
+
+#### createFile()
+
+  Create a File instance.
+
+
+#### use(*plugin, [type])
+
+  Add a middleware for the `file` object.
+
+  `type`: before/after
+
+
+#### build([*callback])
+
+  Start to build files.
+
+
+#### run(file, files, *callback)
+
+  Run a set of `file`, `files` through the middleware stack
+
+
 #### metadata([metadata])
 
   Get/set metadata.
+
 
 #### site([path])
 
   Get/set site.
 
+
 #### source([path])
 
   Get/set source.
+
 
 #### destination([path])
 
   Get/set destination.
 
+
 #### join([path...])
 
   Join the current dir
-
-#### build([*callback])
 
 
 ### License

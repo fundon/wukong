@@ -21,7 +21,7 @@ function concat(fileName) {
     if (i === this.files.length) {
       i = 0;
       css = myth(css);
-      file = this.file = Object.create(this.wukong.file);
+      file = this.file = this.wukong.createFile();
       file.path = fileName;
       file.buffer = css;
     }
