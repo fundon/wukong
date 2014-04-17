@@ -40,8 +40,7 @@
     "front-matter": "^0.2.0",
     "is-utf8": "^0.2.0",
     "stat-mode": "^0.2.0",
-    "win-fork": "^1.1.1",
-    "co-each": "^0.1.0"
+    "win-fork": "^1.1.1"
   },
   "devDependencies": {
     "jshint": "^2.5.0",
