@@ -1,4 +1,4 @@
-# Wukong [*悟空*] [![Build Status](https://travis-ci.org/fundon/wukong.svg)](https://travis-ci.org/fundon/wukong)
+# Wukong [*悟空*] [![Build Status](https://travis-ci.org/fundon/wukong.svg)](https://travis-ci.org/fundon/wukong) (WIP)
 
 Next-gen for pluggable Static Site Generator, using generators via [co][] and [co-ware][].
 
