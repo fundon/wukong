@@ -20,7 +20,7 @@ program
   .option('-c, --config <file>', 'Custom configuration file', 'wukong.json')
   .option('-s, --source <dir>', 'Source for the site', 'src')
   .option('-d, --dest <dir>', 'Output for the destination', 'build')
-  .option('-t, --site <dir>', 'Specify the site directory', 'site')
+  .option('-u, --url <link>', 'Specify the site url', 'site')
   .option('-f, --force', 'Ignore cache, force build the site', false)
   .option('-v, --verbose', 'verbose output');
 
@@ -56,28 +56,31 @@ var wukong = new Wukong(process.cwd());
 // source
 var source = config.source || program.source;
 if (source) wukong.source(source);
-// site
-var site = config.site || program.site;
-if (site) wukong.site(site);
 // destination
 var destination = config.destination || program.destination;
 if (destination) wukong.destination(destination);
 // metadata
 var metadata = config.metadata || program.metadata;
 if (metadata) wukong.metadata(metadata);
+metadata = wukong.metadata();
+// site
+var site = metadata.site || program.url;
+if (site) wukong.site(site);
 
 // Plugins.
 
-var plugins = config.plugins || Object.create(null), key, plugin, opts, around;
+var plugins = config.plugins || [], i, l, plugin, name, opts, around;
 
-for (key in plugins) {
-  opts = plugins[key];
-  around = opts.around;
+for (i = 0, l = plugins.length; i < l; i++) {
+  plugin = plugins[i];
+  name = plugin.name;
+  opts = plugin.options;
+  around = plugin.around;
 
   try {
-    plugin = require(key);
+    plugin = require(name);
   } catch (e) {
-    fatal('Failed to require plugin "' + key + '".');
+    fatal('Failed to require plugin "' + name + '".');
   }
 
   wukong.use(plugin(opts), around);
